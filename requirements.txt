@@ -1,0 +1,22 @@
+# Python 3.14. Versions pinned so results are reproducible.
+
+# Core data + ML (Stage 1)
+numpy==2.5.4
+pandas==3.1.0
+scikit-learn==1.9.1
+joblib==1.6.0
+
+# Email parsing (Step 2): HTML -> plain text
+beautifulsoup4==4.15.0
+
+# Talking to the local Ollama server over HTTP (Stage 2)
+requests==2.34.2
+
+# Metrics: Wilson confidence intervals (Step 6)
+statsmodels==0.15.0
+
+# Charts (Step 8)
+matplotlib==3.11.2
+
+# Unit tests (Step 8)
+pytest==9.1.1
