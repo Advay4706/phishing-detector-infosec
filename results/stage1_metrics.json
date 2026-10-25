@@ -1,0 +1,142 @@
+{
+  "best_model": "logreg",
+  "seed": 42,
+  "selection_metric": "mean F1 over leave-one-source-out folds",
+  "loso_folds": [
+    {
+      "model": "logreg",
+      "held_out_source": "Enron",
+      "n": 29411,
+      "accuracy": 0.8014348373057699,
+      "precision": 0.815474794841735,
+      "recall": 0.7499460935815424,
+      "f1": 0.7813389246667665,
+      "seconds": 7.5
+    },
+    {
+      "model": "logreg",
+      "held_out_source": "SpamAssassin",
+      "n": 5607,
+      "accuracy": 0.4993757802746567,
+      "precision": 0.35,
+      "recall": 0.992089650626236,
+      "f1": 0.5174488567990373,
+      "seconds": 11.1
+    },
+    {
+      "model": "logreg",
+      "held_out_source": "Ling",
+      "n": 2851,
+      "accuracy": 0.9393195370045598,
+      "precision": 0.7373737373737373,
+      "recall": 0.9626373626373627,
+      "f1": 0.8350810295519543,
+      "seconds": 10.3
+    },
+    {
+      "model": "random_forest",
+      "held_out_source": "Enron",
+      "n": 29411,
+      "accuracy": 0.7609057835503723,
+      "precision": 0.7534811758638473,
+      "recall": 0.7350679220872566,
+      "f1": 0.7441606636105654,
+      "seconds": 11.4
+    },
+    {
+      "model": "random_forest",
+      "held_out_source": "SpamAssassin",
+      "n": 5607,
+      "accuracy": 0.5168539325842697,
+      "precision": 0.3577565632458234,
+      "recall": 0.988134475939354,
+      "f1": 0.5253197827229718,
+      "seconds": 32.2
+    },
+    {
+      "model": "random_forest",
+      "held_out_source": "Ling",
+      "n": 2851,
+      "accuracy": 0.9081024202034373,
+      "precision": 0.6505460218408736,
+      "recall": 0.9164835164835164,
+      "f1": 0.7609489051094891,
+      "seconds": 35.3
+    }
+  ],
+  "loso_mean": [
+    {
+      "model": "logreg",
+      "f1": 0.711289603672586,
+      "accuracy": 0.7467100515283288,
+      "precision": 0.6342828440718241,
+      "recall": 0.9015577022817137
+    },
+    {
+      "model": "random_forest",
+      "f1": 0.6768097838143422,
+      "accuracy": 0.7286207121126931,
+      "precision": 0.5872612536501814,
+      "recall": 0.8798953048367091
+    }
+  ],
+  "test_per_set": [
+    {
+      "eval_set": "test_ham",
+      "source": "CEAS_08",
+      "true_kind": "ham",
+      "n": 17234,
+      "accuracy": 0.8906231867239178,
+      "flagged_malicious": 1885
+    },
+    {
+      "eval_set": "test_phishing",
+      "source": "Nazario",
+      "true_kind": "phishing",
+      "n": 1543,
+      "accuracy": 0.8671419313026572,
+      "flagged_malicious": 1338
+    },
+    {
+      "eval_set": "test_phishing_nigerian",
+      "source": "Nigerian_Fraud",
+      "true_kind": "phishing",
+      "n": 3220,
+      "accuracy": 0.9934782608695653,
+      "flagged_malicious": 3199
+    },
+    {
+      "eval_set": "test_spam_transfer",
+      "source": "CEAS_08",
+      "true_kind": "spam",
+      "n": 18546,
+      "accuracy": 0.9835544052625903,
+      "flagged_malicious": 18241
+    }
+  ],
+  "test_main_phishing_vs_ham": {
+    "n": 18777,
+    "accuracy": 0.8886936145284124,
+    "precision": 0.41514117282035373,
+    "recall": 0.8671419313026572,
+    "f1": 0.5614771296684851
+  },
+  "test_main_confusion_matrix": [
+    [
+      15349,
+      1885
+    ],
+    [
+      205,
+      1338
+    ]
+  ],
+  "test_all": {
+    "n": 40543,
+    "accuracy": 0.9404089485237895,
+    "precision": 0.923569719823217,
+    "recall": 0.9772190999184864,
+    "f1": 0.949637288418244
+  },
+  "attack_pool_size": 1338
+}
