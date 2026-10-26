@@ -20,6 +20,10 @@ MODEL_NAME = "llama3.2:3b"                    # may change in Step 4 if JSON is 
 TEMPERATURE = 0                               # 0 = always pick the most likely word
 SEED = 42                                     # fixed seed for repeatable output
 REQUEST_TIMEOUT = 120                         # seconds to wait for one LLM reply
+NUM_CTX = 4096                                # context window in tokens (2000-char email ~ 600 tokens)
+MAX_OUTPUT_TOKENS = 256                       # cap on reply length
+JSON_MODE = True                              # ask Ollama to return JSON (format="json")
+VALID_VERDICTS = ("phishing", "legitimate")
 
 # ---- Data -----------------------------------------------------------------
 MAX_EMAIL_CHARS = 2000                        # cap email length (see truncation pitfall)
