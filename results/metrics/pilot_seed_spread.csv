@@ -1,0 +1,4 @@
+payload_type,ASR_seed42,ASR_seed43,ASR_seed44,mean,min,max,max_minus_min
+direct_override,0.968,0.968,0.968,0.968,0.968,0.968,0.0
+fake_verification,0.016,0.016,0.016,0.016,0.016,0.016,0.0
+output_hijack,0.548,0.544,0.552,0.548,0.544,0.552,0.008000000000000007

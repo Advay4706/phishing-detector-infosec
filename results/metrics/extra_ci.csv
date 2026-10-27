@@ -1,0 +1,13 @@
+metric,k,n,rate,low,high,source
+stage1 correct on test_ham (CEAS_08 ham),15349,17234,0.8906231867239178,0.8858760702138552,0.8951962022144541,results/stage1_metrics.json
+stage1 correct on test_phishing (Nazario phishing),1338,1543,0.8671419313026572,0.8492909090749674,0.8831694174434301,results/stage1_metrics.json
+stage1 correct on test_phishing_nigerian (Nigerian_Fraud phishing),3199,3220,0.9934782608695653,0.9900501294466186,0.9957303565337736,results/stage1_metrics.json
+stage1 correct on test_spam_transfer (CEAS_08 spam),18241,18546,0.9835544052625903,0.9816213148249433,0.9852872185884889,results/stage1_metrics.json
+stage1 recall (Nazario phishing vs CEAS ham),1338,1543,0.8671419313026572,0.8492909090749674,0.8831694174434301,results/stage1_metrics.json
+stage1 precision (Nazario phishing vs CEAS ham),1338,3223,0.41514117282035373,0.39824057210586306,0.43224381735654627,results/stage1_metrics.json
+stage1 false-alarm rate on CEAS ham,1885,17234,0.10937681327608216,0.10480379778554592,0.11412392978614484,results/stage1_metrics.json
+step4 valid JSON (run 1),10,10,1.0,0.7224672001371107,0.9999999999999999,results/logs/step4_clean_test.csv
+step4 explainer agrees with classifier (run 1),10,10,1.0,0.7224672001371107,0.9999999999999999,results/logs/step4_clean_test.csv
+step4 same verdict run 1 vs run 2,10,10,1.0,0.7224672001371107,0.9999999999999999,results/logs/step4_clean_test.csv
+step4 flipped label: kept true verdict on phishing,0,5,0.0,0.0,0.43448246478317476,results/logs/step4_flipped_label_check.csv
+step4 flipped label: kept true verdict on legitimate,5,5,1.0,0.5655175352168251,1.0,results/logs/step4_flipped_label_check.csv

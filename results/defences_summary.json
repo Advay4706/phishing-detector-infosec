@@ -1,0 +1,314 @@
+{
+  "name": "defences",
+  "log_files": [
+    "results/logs/defences_15.csv"
+  ],
+  "model": [
+    "llama3.2:3b"
+  ],
+  "seeds": [
+    42
+  ],
+  "defences": [
+    "none",
+    "delimiting",
+    "hierarchy",
+    "validation",
+    "combined"
+  ],
+  "n_phishing_emails": 15,
+  "n_ham_emails": 15,
+  "n_payloads": 3,
+  "n_runs": 1275,
+  "definitions": "see src/metrics.py docstring",
+  "per_defence": {
+    "combined": {
+      "ASR": 0.2178,
+      "ASR_ci": [
+        0.1688,
+        0.2762
+      ],
+      "ASR_raw": 0.3778,
+      "n_asr": 225,
+      "LAR": 0.7822,
+      "LAR_ci": [
+        0.7238,
+        0.8312
+      ],
+      "INV": 0.0,
+      "FLIP": 0.0,
+      "validator_interventions": 36,
+      "source": "results/metrics/defences_overall.csv"
+    },
+    "delimiting": {
+      "ASR": 0.4622,
+      "ASR_ci": [
+        0.3983,
+        0.5275
+      ],
+      "ASR_raw": 0.4622,
+      "n_asr": 225,
+      "LAR": 0.5378,
+      "LAR_ci": [
+        0.4725,
+        0.6017
+      ],
+      "INV": 0.0,
+      "FLIP": 0.0,
+      "validator_interventions": 0,
+      "source": "results/metrics/defences_overall.csv"
+    },
+    "hierarchy": {
+      "ASR": 0.4711,
+      "ASR_ci": [
+        0.4069,
+        0.5363
+      ],
+      "ASR_raw": 0.4711,
+      "n_asr": 225,
+      "LAR": 0.5289,
+      "LAR_ci": [
+        0.4637,
+        0.5931
+      ],
+      "INV": 0.0,
+      "FLIP": 0.0,
+      "validator_interventions": 0,
+      "source": "results/metrics/defences_overall.csv"
+    },
+    "none": {
+      "ASR": 0.5067,
+      "ASR_ci": [
+        0.4418,
+        0.5713
+      ],
+      "ASR_raw": 0.5067,
+      "n_asr": 225,
+      "LAR": 0.4933,
+      "LAR_ci": [
+        0.4287,
+        0.5582
+      ],
+      "INV": 0.0,
+      "FLIP": 0.0,
+      "validator_interventions": 0,
+      "source": "results/metrics/defences_overall.csv"
+    },
+    "validation": {
+      "ASR": 0.3067,
+      "ASR_ci": [
+        0.2501,
+        0.3697
+      ],
+      "ASR_raw": 0.5067,
+      "n_asr": 225,
+      "LAR": 0.6933,
+      "LAR_ci": [
+        0.6303,
+        0.7499
+      ],
+      "INV": 0.0,
+      "FLIP": 0.0,
+      "validator_interventions": 45,
+      "source": "results/metrics/defences_overall.csv"
+    }
+  },
+  "clean": {
+    "combined/ham": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "combined/phishing": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "delimiting/ham": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "delimiting/phishing": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "hierarchy/ham": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "hierarchy/phishing": {
+      "LAR": 0.9333,
+      "LAR_ci": [
+        0.7018,
+        0.9881
+      ],
+      "wrong_rate": 0.0667,
+      "wrong_ci": [
+        0.0119,
+        0.2982
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "none/ham": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "none/phishing": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "validation/ham": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    },
+    "validation/phishing": {
+      "LAR": 1.0,
+      "LAR_ci": [
+        0.7961,
+        1.0
+      ],
+      "wrong_rate": 0.0,
+      "wrong_ci": [
+        0.0,
+        0.2039
+      ],
+      "n": 15,
+      "source": "results/metrics/defences_clean.csv"
+    }
+  },
+  "figures": [
+    "results/figures/defences_asr_by_payload_type.png",
+    "results/figures/defences_asr_by_location.png",
+    "results/figures/defences_asr_by_defence.png",
+    "results/figures/defences_inv_by_defence.png",
+    "results/figures/defences_flip_by_defence.png",
+    "results/figures/defences_de_by_defence.png",
+    "results/figures/defences_clean_phishing_lar.png",
+    "results/figures/defences_clean_ham_lar.png"
+  ],
+  "defence_effectiveness": {
+    "delimiting": {
+      "DE": 0.0444,
+      "DE_ci": [
+        -0.0476,
+        0.1354
+      ],
+      "DE_raw": 0.0444,
+      "ASR_base": 0.5067,
+      "ASR_def": 0.4622,
+      "source": "results/metrics/defences_de_overall.csv"
+    },
+    "hierarchy": {
+      "DE": 0.0356,
+      "DE_ci": [
+        -0.0564,
+        0.1267
+      ],
+      "DE_raw": 0.0356,
+      "ASR_base": 0.5067,
+      "ASR_def": 0.4711,
+      "source": "results/metrics/defences_de_overall.csv"
+    },
+    "validation": {
+      "DE": 0.2,
+      "DE_ci": [
+        0.1095,
+        0.2859
+      ],
+      "DE_raw": 0.0,
+      "ASR_base": 0.5067,
+      "ASR_def": 0.3067,
+      "source": "results/metrics/defences_de_overall.csv"
+    },
+    "combined": {
+      "DE": 0.2889,
+      "DE_ci": [
+        0.2016,
+        0.37
+      ],
+      "DE_raw": 0.1289,
+      "ASR_base": 0.5067,
+      "ASR_def": 0.2178,
+      "source": "results/metrics/defences_de_overall.csv"
+    }
+  }
+}

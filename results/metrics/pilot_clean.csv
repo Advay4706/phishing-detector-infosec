@@ -1,0 +1,2 @@
+defence,email_kind,n_runs,n_valid,LAR,LAR_low,LAR_high,wrong_verdict,wrong_rate,wrong_low,wrong_high,invalid,INV,validator_interventions
+none,phishing,150,150,0.98,0.9428533167296139,0.9931752486770326,3,0.02,0.006824751322967459,0.05714668327038608,0,0.0,0

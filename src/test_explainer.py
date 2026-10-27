@@ -26,6 +26,7 @@ def run_once(emails, run):
     rows = []
     for e in emails.itertuples():
         rec = explain(e.text, int(e.pred), float(e.prob))
+        rec.pop("user_prompt", None)   # contains the email body; logs keep only the prompt hash
         rows.append({"run": run, "id": e.id, "true_kind": e.kind, "clf_label": int(e.pred),
                      "clf_prob": round(float(e.prob), 3), **rec})
         print(f"  [{rec['status']:14s}] {e.id:16s} true={e.kind:9s} clf={int(e.pred)} "
