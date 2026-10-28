@@ -1,5 +1,10 @@
 # Phishing Detector with an Adversarial Explanation Layer
 
+> **Version 1 (`v1` branch):** this is the finished first version of the project, built with
+> **`llama3.2:3b`** (3 billion parameters) as the explainer. All results, figures and the final
+> review in this branch come from that model. The `main` branch is where the project is being
+> rebuilt with `llama3.1:8b` and all 20 payloads.
+
 CBS 3002 Information Security project.
 
 A two-stage phishing detector, red-teamed with prompt injection:
