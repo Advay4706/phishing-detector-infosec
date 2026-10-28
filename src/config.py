@@ -2,6 +2,7 @@
 
 Every script imports from here, so changing a value once changes it everywhere.
 """
+import os
 from pathlib import Path
 
 # ---- Paths ----------------------------------------------------------------
@@ -16,10 +17,15 @@ FIGURES_DIR = RESULTS_DIR / "figures"
 
 # ---- Local LLM (Ollama) ---------------------------------------------------
 OLLAMA_URL = "http://localhost:11434"         # local only, no cloud API
-MODEL_NAME = "llama3.2:3b"                    # may change in Step 4 if JSON is unreliable
+# Default model for all existing results. To run another model without touching them:
+#   $env:PHISH_MODEL = "llama3.1:8b"   (PowerShell, before running any script)
+DEFAULT_MODEL = "llama3.2:3b"
+MODEL_NAME = os.environ.get("PHISH_MODEL", DEFAULT_MODEL)
+MODEL_SUFFIX = "" if MODEL_NAME == DEFAULT_MODEL else "_" + MODEL_NAME.replace(":", "_").replace("/", "_").replace(".", "")
+MODEL_TAG = MODEL_NAME.replace(":", "_").replace("/", "_").replace(".", "")  # for file names
 TEMPERATURE = 0                               # 0 = always pick the most likely word
 SEED = 42                                     # fixed seed for repeatable output
-REQUEST_TIMEOUT = 120                         # seconds to wait for one LLM reply
+REQUEST_TIMEOUT = 300                         # seconds to wait for one LLM reply (larger models are slower)
 NUM_CTX = 4096                                # context window in tokens (2000-char email ~ 600 tokens)
 MAX_OUTPUT_TOKENS = 512                       # cap on reply length (256 cut off replies that quoted long URLs)
 JSON_MODE = True                              # ask Ollama to return JSON (format="json")
