@@ -43,7 +43,7 @@ def main():
         runs.append(run_once(emails, run))
     log = pd.concat(runs, ignore_index=True)
     config.LOGS_DIR.mkdir(parents=True, exist_ok=True)
-    log.to_csv(config.LOGS_DIR / "step4_clean_test.csv", index=False)
+    log.to_csv(config.LOGS_DIR / f"step4_clean_test{config.MODEL_SUFFIX}.csv", index=False)
 
     r1 = runs[0]
     status_counts = r1.status.value_counts().to_dict()
@@ -59,7 +59,7 @@ def main():
     print(f"  identical raw reply in run 1 and run 2: {same}/{len(r1)}")
     print(f"  emails cut off by the model's context window: {trunc}")
     print(f"  mean seconds per email: {r1.seconds.mean():.1f}")
-    print(f"\nlog saved to {(config.LOGS_DIR / 'step4_clean_test.csv').relative_to(config.ROOT)}")
+    print(f"\nlog saved to {(config.LOGS_DIR / f'step4_clean_test{config.MODEL_SUFFIX}.csv').relative_to(config.ROOT)}")
 
     print("\nReasons given (run 1):")
     for r in r1.itertuples():
@@ -83,7 +83,7 @@ def flipped_label_check(emails):
     for kind in ("phishing", "legitimate"):
         g = df[df.true == kind]
         print(f"  true {kind:10s}: kept the true verdict {(g.llm == g.true).sum()}/{len(g)}")
-    df.to_csv(config.LOGS_DIR / "step4_flipped_label_check.csv", index=False)
+    df.to_csv(config.LOGS_DIR / f"step4_flipped_label_check{config.MODEL_SUFFIX}.csv", index=False)
 
 
 if __name__ == "__main__":
