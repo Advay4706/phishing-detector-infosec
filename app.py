@@ -261,7 +261,7 @@ with tab_about:
       email [label="Email\\n(subject + body,\\n≤ 2000 chars)"];
       attack [label="Injection harness\\n20 payloads × 5 locations", style="rounded,dashed"];
       clf [label="Stage 1\\nTF-IDF + Logistic Regression\\nphishing / legitimate"];
-      llm [label="Stage 2\\nLocal LLM (llama3.2:3b, Ollama)\\nJSON {verdict, reason}"];
+      llm [label="Stage 2\\nLocal LLM (llama3.1:8b, Ollama)\\nJSON {verdict, reason}"];
       def [label="Defence\\n(delimiting / hierarchy /\\noutput validation)", style="rounded,dashed"];
       out [label="Metrics\\nASR · LAR · INV · FLIP · DE\\n+ Wilson intervals"];
       attack -> email [style=dashed]; email -> clf -> llm -> out; email -> llm;

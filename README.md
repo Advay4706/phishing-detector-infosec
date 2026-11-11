@@ -2,10 +2,15 @@
 
 CBS 3002 Information Security project.
 
+> **Version 2 (this branch, `main`) is in progress.** It rebuilds the experiment with a larger
+> model, **`llama3.1:8b`**, all 20 payloads and one seed. The finished first version
+> (`llama3.2:3b`, 3 payloads) is on the [`v1` branch](../../tree/v1). Until the new runs finish,
+> the Results section below still shows the version 1 numbers.
+
 A two-stage phishing detector, red-teamed with prompt injection:
 
 1. **Stage 1, classifier:** TF-IDF + Logistic Regression labels an email *legitimate* or *malicious*.
-2. **Stage 2, explainer:** a local open-source LLM (`llama3.2:3b` through Ollama, no cloud API)
+2. **Stage 2, explainer:** a local open-source LLM (`llama3.1:8b` through Ollama, no cloud API)
    explains the verdict as JSON `{"verdict", "reason"}`.
 3. **Stage 3, attack:** a harness inserts 20 prompt-injection payloads (5 types) at 5 places in
    phishing emails and measures whether the *explanation* can be turned to "legitimate" while the
@@ -21,13 +26,14 @@ email ──► Stage 1 classifier ──► label + P(malicious) ──┐
 
 ## Setup
 
-Requirements: Windows/macOS/Linux, Python 3.14, [Ollama](https://ollama.com), about 3 GB of disk.
+Requirements: Windows/macOS/Linux, Python 3.14, [Ollama](https://ollama.com), about 6 GB of disk and a
+6 GB GPU (the model also runs on CPU, slowly).
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate          # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-ollama pull llama3.2:3b
+ollama pull llama3.1:8b
 python -m src.smoke_test        # must end with SMOKE TEST PASSED
 python -m src.download_data     # Kaggle CSVs into data/raw/kaggle_phishing/ (no login needed)
 ```
@@ -46,7 +52,7 @@ Interpreter*) and open the terminal with Ctrl+`.
 | 5 Pilot attack | `python -m src.harness --n-emails 50 --payloads DO-1,FV-1,OH-1 --seeds 42,43,44 --out results/logs/pilot_3seeds.csv` | log CSV |
 | 6 Metrics | `python -m src.make_report results/logs/pilot_3seeds.csv --name pilot` | `results/metrics/`, `results/figures/` |
 | 7 Defences | `python -m src.harness --n-emails 50 --n-ham 50 --first 15 --payloads DO-1,FV-1,OH-1 --seed 42 --defences none,delimiting,hierarchy,combined --out results/logs/defences_15.csv`, then `python -m src.derive_validation results/logs/defences_15.csv`, then `python -m src.make_report results/logs/defences_15.csv --name defences` | tables, charts, `results/defences_summary.json` |
-| 8 Full run | `powershell -File run_full.ps1` (resumable) | `results/logs/final.csv`, `results/final_summary.json` |
+| 8 Full run | `powershell -File run_full.ps1` (resumable) | `results/logs/full_8b.csv`, `results/full_8b_summary.json` |
 | Tests | `python -m pytest tests -q` | console |
 | Demo examples | `python -m src.pick_demo_examples results/logs/pilot_3seeds.csv` | `results/demo_examples.json` |
 | UI | `streamlit run app.py` | http://localhost:8501 |
@@ -93,7 +99,7 @@ Defined once, in `src/metrics.py`:
 95% intervals: Wilson for rates, Newcombe for DE. An email-level bootstrap is also reported,
 because runs on the same email are not independent.
 
-## Results
+## Results (version 1, `llama3.2:3b`)
 
 Full write-up, with the source file for every number: [`results/SUMMARY.md`](results/SUMMARY.md).
 Charts are in `results/figures/` and tables in `results/metrics/`.
