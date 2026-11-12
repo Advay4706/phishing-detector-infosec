@@ -101,6 +101,13 @@ def explain(email_text, classifier_label, classifier_prob, seed=config.SEED,
         record.update(prompt_tokens=resp.get("prompt_eval_count"),
                       # If prompt_tokens == NUM_CTX the email was cut off by the model
                       truncated_by_model=resp.get("prompt_eval_count", 0) >= config.NUM_CTX)
+    except requests.HTTPError as e:
+        # Ollama stops a reply that keeps repeating itself. That is a broken answer from the
+        # model (repeatable at temperature 0), not a server problem, so it counts as invalid
+        # output and is not retried. Other HTTP errors stay "error" and are retried.
+        detail = e.response.text if e.response is not None else ""
+        status = "degenerate_output" if "repeat limit" in detail else "error"
+        raw, verdict, reason = f"HTTPError {e.response.status_code}: {detail[:200]}", None, None
     except (requests.RequestException, KeyError, ValueError) as e:
         raw, status, verdict, reason = f"{type(e).__name__}: {e}", "error", None, None
     record.update(raw=raw, status=status, verdict=verdict, reason=reason,
